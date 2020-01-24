@@ -32,13 +32,14 @@ RUN yum -y -q --setopt=tsflags=nodocs --nogpgcheck update > /dev/null && \
     php-pecl-xdebug > /dev/null && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer > /dev/null && \
     yum clean all && rm -rf /var/cache/yum && rm -f /etc/httpd/conf.d/{userdir.conf,welcome.conf} && \
-    chmod -R g+w /var/www/html && mkdir -p /var/xdebug/profiler && chmod -R 777 /var/xdebug
+    chmod -R g+w /var/www/html && mkdir -p /var/xdebug/profiler && chmod -R 777 /var/xdebug && \
+    touch /tmp/xdebug.log && chmod 666 /tmp/xdebug.log
 
 # -----------------------------------------------------------------------------
 # Project settings
 # -----------------------------------------------------------------------------
-COPY ./dist/httpd.local.conf    /etc/httpd/conf.d/httpd.local.conf
-COPY ./dist/web.php.ini  /etc/php.d/web.php.ini
+COPY ./dist/httpd.local.conf /etc/httpd/conf.d/httpd.local.conf
+COPY ./dist/web.php.ini /etc/php.d/web.php.ini
 
 # -----------------------------------------------------------------------------
 # Set ports and env variable HOME
