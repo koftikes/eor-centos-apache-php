@@ -29,7 +29,8 @@ RUN yum -y -q --setopt=tsflags=nodocs --nogpgcheck update > /dev/null && \
     php-intl \
     php-xml \
     php-zip \
-    php-pecl-xdebug > /dev/null && \
+    php-pecl-xdebug \
+    libaio > /dev/null && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer > /dev/null && \
     yum clean all && rm -rf /var/cache/yum && rm -f /etc/httpd/conf.d/{userdir.conf,welcome.conf} && \
     chmod -R g+w /var/www/html && mkdir -p /var/xdebug/profiler && chmod -R 777 /var/xdebug && \
