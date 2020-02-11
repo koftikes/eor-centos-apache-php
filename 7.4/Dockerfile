@@ -46,7 +46,7 @@ COPY ./dist/web.php.ini /etc/php.d/web.php.ini
 # Set ports and env variable HOME
 # -----------------------------------------------------------------------------
 EXPOSE 80
-ENV HOME /var/www
+WORKDIR /var/www/html
 
 # -----------------------------------------------------------------------------
 # Start
